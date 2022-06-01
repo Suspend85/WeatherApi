@@ -1,0 +1,12 @@
+button {
+	width: 100px;
+
+}
+
+.weather__response {
+	margin-top: 20px;
+	width: 380px;
+	height: fit-content;
+	border: 1px solid black;
+	/* display: none; */
+}
