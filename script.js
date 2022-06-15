@@ -4,7 +4,7 @@ const form = document.querySelector('#weather'),
 	input = form.querySelector('#city');
 
 const getWeatherJson = async (city) => {
-	const apiKey = 'b41872225629ae1901270d6feee57a96',
+	const apiKey = 'YOUR_API_KEY',
 		lang = 'ru';
 	let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&lang=${lang}&units=metric`;
 
