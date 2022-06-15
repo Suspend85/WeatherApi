@@ -4,18 +4,17 @@ const form = document.querySelector('#weather'),
 	input = form.querySelector('#city');
 
 const getWeatherJson = async (city) => {
-	const apiKey = 'YOUR_API_KEY',
+	const apiKey = 'b41872225629ae1901270d6feee57a96',
 		lang = 'ru';
 	let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&lang=${lang}&units=metric`;
 
-	const response = await fetch(apiUrl);
-
-	if (!response.ok) {
-		throw new Error(`Could not fetch ${apiUrl}, status ${response.status}`);
+	let response = await fetch(apiUrl);
+	if (response.ok) {
+		return await response.json();
+	} else {
+		alert(`cant find this place`);
+		throw new Error(`Could not fetch ${apiUrl}, status: ${response.status}`);
 	}
-	let json = await response.json();
-	console.log(json);
-	return await json;
 };
 
 class CreateDiv {
@@ -67,7 +66,6 @@ form.addEventListener('submit', (e) => {
 			name = result[1];
 
 		new CreateDiv(name, temper, feels, humidity, pressure, '.container').render();
-		return console.log(result);
 	});
 
 	form.reset();
